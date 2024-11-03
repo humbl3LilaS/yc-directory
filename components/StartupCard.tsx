@@ -3,10 +3,12 @@ import {EyeIcon} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import {Button} from "@/components/ui/button";
+import {Author, Startup} from "@/sanity/types";
 
 type StartupCardProps = {
-    post: any
+    post: StartupTypeCard
 }
+export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
 
 
 const StartupCard = ({post}: StartupCardProps) => {
@@ -38,18 +40,20 @@ const StartupCard = ({post}: StartupCardProps) => {
                     </h3>
                 </div>
                 <Link href={`/user/${post?.author?._id}`}>
-                    <Image src={"https://placehold.co/48x48"} alt={"logo"} width={48} height={48}
+                    <Image src={post?.author?.image ?? "https://placehold.co/48x48"} alt={"logo"} width={48}
+                           height={48}
                            className={"rounded-full"}/>
                 </Link>
             </div>
             <p className={"startup-card_desc"}>
-                <Link href={`/startup/${post?._id}}`}>
+                <Link href={`/startup/${post?._id}`}>
                     {post?.description}
                 </Link>
-                <Link href={`/startup/${post?._id}}`} className={"block mt-3"}>
-                    <img src={post?.image} alt={"placeholder"} className={"startup-card_img"}/>
-                </Link>
+
             </p>
+            <Link href={`/startup/${post?._id}}`} className={"block mt-3"}>
+                <img src={post?.image} alt={"placeholder"} className={"startup-card_img"}/>
+            </Link>
 
             <div className={"mt-5 flex-between gap-x-3"}>
                 <p className={"text-16-medium"}>

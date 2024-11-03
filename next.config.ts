@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    /* config options here */
     images: {
         remotePatterns: [
             {
@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
             }
         ],
         dangerouslyAllowSVG: true,
+    },
+    experimental: {
+        ppr: "incremental"
+    },
+    devIndicators: {
+        appIsrStatus: true,
+        buildActivity: true,
+        buildActivityPosition: "bottom-right"
+
     }
 };
 

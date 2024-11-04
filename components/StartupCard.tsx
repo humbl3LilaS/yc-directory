@@ -4,11 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import {Button} from "@/components/ui/button";
 import {Author, Startup} from "@/sanity/types";
+import {Skeleton} from "@/components/ui/skeleton";
 
 type StartupCardProps = {
-    post: StartupTypeCard
+    post: StartupCardType
 }
-export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
+export type StartupCardType = Omit<Startup, "author"> & { author?: Author };
 
 
 const StartupCard = ({post}: StartupCardProps) => {
@@ -70,4 +71,18 @@ const StartupCard = ({post}: StartupCardProps) => {
         </li>
     );
 };
+
+export const StartupSkeleton = () => {
+    return (
+        <>
+            {
+                [0, 1, 2, 3, 4].map((item) => <li key={`skeleton-${item}`}>
+                    <Skeleton className={"startup-card_skeleton"}/>
+                </li>)
+            }
+        </>
+    )
+}
+
+
 export default StartupCard;

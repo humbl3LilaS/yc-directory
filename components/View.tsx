@@ -1,6 +1,6 @@
 import Ping from "@/components/Ping";
 import {client} from "@/sanity/lib/client";
-import {STARTUP_VIEWS_QUERY} from "@/lib/quries";
+import {STARTUP_VIEWS_QUERY} from "@/sanity/lib/quries";
 import {writeClient} from "@/sanity/lib/write-client";
 import {unstable_after as after} from "next/server";
 
